@@ -1,0 +1,29 @@
+version: '3'
+services:
+  postgresql:
+    build:
+      context: ./dockers/postgresql/
+      dockerfile: Dockerfile
+    ports:
+      - "5432:5432"
+
+  python:
+    build:
+      context: ./dockers/python/
+      dockerfile: Dockerfile
+      args:
+        - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      - ./dockers/python/.env:/root/.env
+    ports:
+      - "8000:8000"
+
+  typescript:
+    build:
+      context: ./dockers/typescript/
+      dockerfile: Dockerfile
+      args:
+        - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      - ./dockers/typescript/:/app/
+    tty: true

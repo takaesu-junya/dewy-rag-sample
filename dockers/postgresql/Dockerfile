@@ -1,0 +1,6 @@
+FROM ankane/pgvector:latest
+ENV POSTGRES_DB=dewydb
+ENV POSTGRES_USER=dewydbuser
+ENV POSTGRES_PASSWORD=dewydbpwd
+ENV POSTGRES_HOST_AUTH_METHOD=trust
+EXPOSE 5432
